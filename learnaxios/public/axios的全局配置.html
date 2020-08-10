@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全局配置</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.defaults.baseURL = 'Http://localhost:9999/student/student';
+    axios.defaults.timeout = 5000;
+    axios.get('getAllStudent').then(res => {
+        console.log(res);
+    });   //把公共部分提取出来全局配置,在之后的操作中就不需要写这么长的地址
+
+    axios.post('findStudentById').then(res => {
+        console.log(res);
+    })  //在全局配置的情况下,在这样写是不是很方便了呢
+</script>
+</body>
+</html>

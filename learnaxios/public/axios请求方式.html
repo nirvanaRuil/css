@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请求方式</title>
+</head>
+<body><script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script>
+
+    axios.get('https://api.coindesk.com/v1/bpi/currentprice.json').then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);  //请求失败
+    })  //get无参请求接收
+
+    axios.get('Http://localhost:9999/student/student/findStudentById', {params: {id: 1 , name:'张三'}}).then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);  //请求失败
+    })  //get有参请求接收  注意传递的params是个对象,可以多个参数
+
+    axios.post('Http://localhost:9999/student/student/findStudent').then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);  //请求失败
+    })  //
+    //post无参请求接收
+
+    axios.post('Http://localhost:9999/student/student/findStudentById', "name=张三&age=14").then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);  //请求失败
+    })  //post有参请求接收
+
+    axios.post('Http://localhost:9999/student/student/findStudentById', {name:'张三'}).then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);  //请求失败
+    })  //post有参请求接收
+//这种方式也可以,但是后台要处理数据,要将axios自动装换的json数据转换为Java对象.  要在服务器端给接收的参数加上@requestBody
+</script>
+</body>
+</html>

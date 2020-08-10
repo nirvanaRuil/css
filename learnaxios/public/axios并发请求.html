@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>并发请求</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    axios.all([
+        axios.get('Http://localhost:9999/student/student/findStudent'),
+        axios.get('Http://localhost:9999/student/student/getStudent',{params: {id: 1 , name:'张三'}}),
+    ]).then( res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    })  //基础并发请求,因为并发请求返回的数据是一个数组,所以在这种基础的没经过处理的情况下挤在一起不好辨认.
+
+    axios.all([
+        axios.get('Http://localhost:9999/student/student/findStudent'),
+        axios.get('Http://localhost:9999/student/student/getStudent',{params: {id: 1 , name:'张三'}}),
+    ]).then(
+        axios.spread((res1,res2)=>{
+            console.log(res1);
+            console.log(res2);
+        })).catch(err => {
+        console.log(err);
+    })  //改良后的并发请求,用这种
+
+</script>
+</body>
+</html>

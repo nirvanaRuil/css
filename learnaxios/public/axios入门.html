@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios</title>
+</head>
+<body>
+<!--<script src="https://unpkg.com/axios/dist/axios.min.js"></script>-->
+<script>
+    import * as axios from "core-js/internals/internal-state";
+    axios({
+        url:'',
+        method:'get'
+    }).then(res => {
+        console.log(res)   //简写:res.log
+    })
+//一个最基本的数据请求与接收
+
+    axios({
+        url:'Http://localhost:9999/student/student/findStudentById?id=1',
+        //参数直接拼接到URL中
+        method:'get'
+    }).then(res => {
+        console.log(res)   //简写:res.log
+    })
+    //get不带参的数据请求与接收
+
+    axios({
+        url:'Http://localhost:9999/student/student/findStudentById',
+        params:{
+            id:1,
+            name:'2'
+            //可以有多个参数请求
+        },
+        method:'get'
+    }).then(res => {
+        console.log(res)   //简写:res.log
+    })
+    //get带参的数据请求与接收
+
+    axios({
+        url:'Http://localhost:9999/student/student/findStudentByName',
+        params:{
+            name:'2'
+            //可以有多个参数请求
+        }, //method为post时,使用data后台会出现拿到数据是null的情况,因为json接收不到
+        method:'post'
+    }).then(res => {
+        console.log(res)   //简写:res.log
+    })
+    //post带参的数据请求与接收
+</script>
+</body>
+</html>

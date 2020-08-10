@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>拦截器</title>
+</head>
+<body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    //请求方向
+    axios.interceptors.request.use(config => {
+        console.log("请求进入拦截器");
+        console.log(config);
+        return config;  //如果不加return的话,程序走到这就停住了,不会再往下运行
+    }),err => {
+        console.log(err);
+    }  //请求方向的成功和失败两种拦截. 此时不需要把失败的情况用catch写出来,因为人家自己带了成功和失败两种情况啦
+
+    axios.get('Http://localhost:9999/student/student/findStudent').then(res =>{
+        console.log(res);
+    })
+
+    //响应方向
+    axios.interceptors.response.use(config => {
+        console.log("请求进入拦截器");
+        console.log(config);
+        return config.data;  //这里直接写return时,会返回所有数据,如果你只想要data,那么就在config后.data
+    }),err => {
+        console.log(err);
+    }  //响应方向也一样,自带两种情况
+
+    axios.get('Http://localhost:9999/student/student/findStudent').then(res =>{
+        console.log(res);
+    })
+</script>
+</body>
+</html>

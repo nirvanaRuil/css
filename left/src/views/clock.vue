@@ -36,11 +36,11 @@
         created() {
             this.getH()
             this.getS()
-            this.hourTime = setInterval( () => this.getH(),1000)
-            this.minTime = setInterval( () =>{
+            this.hourTimer = setInterval( () => this.getH(),1000)
+            this.minTimer = setInterval( () =>{
                 this.min = new Date().getMinutes()
             },1000)
-            this.secTime = setInterval( () =>this.getS(),1000)
+            this.secTimer = setInterval( () =>this.getS(),1000)
         },
         beforeDestroy() {
             if (this.hourTimer||this.minTimer||this.secTimer) {

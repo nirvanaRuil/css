@@ -1,25 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
-// import rihuanshi from "../views/rihuanshi.vue";
-// const count = () =>
-//     import("../views/count.vue")
-// const guessNumCss = () =>
-//     import("../../../rihuanshi/src/views/guessNumCss.vue")
-// const signal = () =>
-//     import("../views/signal.vue")
+import Home from '../views/Home.vue'
+import rihuanshi from "../views/rihuanshi.vue";
+import count from "../views/count.vue";
+import guessNumCss from "../views/guessNumCss.vue";
+import signal from "../views/signal.vue";
 // const clock = () =>
 //     import("../../../rihuanshi/src/views/clock.vue")
-import all from "../views/all.vue";
+// import all from "../views/all.vue";
 
 Vue.use(VueRouter)
 
     const routes = [
-        {
-          path: '/',
-          name: 'all',
-          component: all
-        },
+        // {
+        //   path: '/',
+        //   name: 'all',
+        //   component: all
+        // },
         {
           path: '/about',
           name: 'About',
@@ -44,7 +41,7 @@ Vue.use(VueRouter)
           component: () => import('../views/count.vue')
         },
           {
-          path: '/signal',
+          path: '/',
           name: 'signal',
           component: () => import( '../views/signal.vue')
         },
@@ -52,12 +49,12 @@ Vue.use(VueRouter)
           path: '/guessNumCss',
           name: 'guessNumCss',
           component: () => import( '../views/guessNumCss.vue')
-        },
-          {
-          path: '/clock',
-          name: 'clock',
-          component: () => import( '../../../left/src/views/clock.vue')
-        }
+         },
+        //   {
+        //   path: '/clock',
+        //   name: 'clock',
+        //   component: () => import( '../../../left/src/views/clock.vue')
+        // }
 ]
 
 const router = new VueRouter({
